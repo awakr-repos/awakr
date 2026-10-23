@@ -26,22 +26,22 @@ const components = [
 <section 
   id="como-funciona" 
   aria-labelledby="components-heading"
-  class="py-24 bg-gray-50"
+  class="py-24 bg-gray-50 dark:bg-gray-900"
 >
   <div class="max-w-6xl mx-auto px-6">
-    <h2 id="components-heading" class="text-3xl font-bold">
+    <h2 id="components-heading" class="text-3xl font-bold text-black dark:text-white">
       O que você pode ter no seu site
     </h2>
-    <p class="mt-4 text-gray-600 text-lg">
+    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
       Componentes prontos, personalizados com a sua identidade visual.
     </p>
 
     <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
       {components.map(component => (
-        <li class="bg-white rounded-2xl p-6 border border-gray-100">
+        <li class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
           <span class="text-3xl" aria-hidden="true">{component.icon}</span>
-          <h3 class="mt-4 font-semibold text-lg">{component.title}</h3>
-          <p class="mt-2 text-gray-600 text-sm leading-relaxed">{component.description}</p>
+          <h3 class="mt-4 font-semibold text-lg text-black dark:text-white">{component.title}</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{component.description}</p>
         </li>
       ))}
     </ul>

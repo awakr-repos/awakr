@@ -36,21 +36,25 @@ const plans = [
 <section
   id="precos"
   aria-labelledby="pricing-heading"
-  class="py-24 bg-gray-50"
+  class="py-24 bg-gray-50 dark:bg-gray-900"
 >
   <div class="max-w-6xl mx-auto px-6">
-    <h2 id="pricing-heading" class="text-3xl font-bold">
+    <h2 id="pricing-heading" class="text-3xl font-bold text-black dark:text-white">
       Preços
     </h2>
-    <p class="mt-4 text-gray-600 text-lg">
+    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
       Investimento único, sem mensalidade.
     </p>
 
     <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl" role="list">
       {plans.map(plan => (
-        <li class={`rounded-2xl p-8 border ${plan.highlighted ? 'bg-black text-white border-black' : 'bg-white border-gray-100'}`}>
+        <li class={`rounded-2xl p-8 border ${
+          plan.highlighted 
+            ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' 
+            : 'bg-white dark:bg-gray-800 text-black dark:text-white border-gray-100 dark:border-gray-700'
+        }`}>
           <h3 class="font-semibold text-xl">{plan.title}</h3>
-          <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-600 dark:text-gray-400'}`}>
             {plan.description}
           </p>
           <p class="mt-6 text-4xl font-bold">{plan.price}</p>
@@ -69,8 +73,8 @@ const plans = [
             aria-label={`${plan.cta} — plano ${plan.title}`}
             class={`mt-8 block text-center py-3 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               plan.highlighted
-                ? 'bg-white text-black hover:bg-gray-100 focus:ring-white'
-                : 'bg-black text-white hover:bg-gray-800 focus:ring-black'
+                ? 'bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 focus:ring-white dark:focus:ring-black'
+                : 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 focus:ring-black dark:focus:ring-white'
             }`}
           >
             {plan.cta}
