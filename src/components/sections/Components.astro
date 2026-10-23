@@ -1,0 +1,49 @@
+---
+const components = [
+  {
+    title: 'Carrossel de produtos',
+    description: 'Exiba seus produtos, pratos ou coleções de forma visual e atraente.',
+    icon: '🖼️',
+  },
+  {
+    title: 'Widget de eventos',
+    description: 'Divulgue eventos, shows e datas especiais do seu negócio.',
+    icon: '📅',
+  },
+  {
+    title: 'Seção de promoções',
+    description: 'Destaque ofertas e promoções para atrair mais clientes.',
+    icon: '🏷️',
+  },
+  {
+    title: 'Cardápio digital',
+    description: 'Integre seu cardápio Goomer diretamente no seu site.',
+    icon: '🍽️',
+  },
+]
+---
+
+<section 
+  id="como-funciona" 
+  aria-labelledby="components-heading"
+  class="py-24 bg-gray-50"
+>
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 id="components-heading" class="text-3xl font-bold">
+      O que você pode ter no seu site
+    </h2>
+    <p class="mt-4 text-gray-600 text-lg">
+      Componentes prontos, personalizados com a sua identidade visual.
+    </p>
+
+    <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+      {components.map(component => (
+        <li class="bg-white rounded-2xl p-6 border border-gray-100">
+          <span class="text-3xl" aria-hidden="true">{component.icon}</span>
+          <h3 class="mt-4 font-semibold text-lg">{component.title}</h3>
+          <p class="mt-2 text-gray-600 text-sm leading-relaxed">{component.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+const plans = [
+  {
+    title: 'Starter',
+    price: 'R$ 497',
+    description: 'Para quem quer começar com presença digital profissional.',
+    features: [
+      '1 layout à escolha',
+      'Identidade visual personalizada',
+      'Cardápio Goomer integrado',
+      'Domínio próprio configurado',
+      'Treinamento no Sanity Studio',
+      '30 dias de suporte',
+    ],
+    cta: 'Começar agora',
+    highlighted: false,
+  },
+  {
+    title: 'Pro',
+    price: 'R$ 897',
+    description: 'Para negócios que querem mais visibilidade e recursos.',
+    features: [
+      'Tudo do Starter',
+      'Seção de eventos',
+      'Seção de promoções',
+      'Carrossel de produtos',
+      'Link para iFood',
+      '60 dias de suporte',
+    ],
+    cta: 'Quero o Pro',
+    highlighted: true,
+  },
+]
+---
+
+<section
+  id="precos"
+  aria-labelledby="pricing-heading"
+  class="py-24 bg-gray-50"
+>
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 id="pricing-heading" class="text-3xl font-bold">
+      Preços
+    </h2>
+    <p class="mt-4 text-gray-600 text-lg">
+      Investimento único, sem mensalidade.
+    </p>
+
+    <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl" role="list">
+      {plans.map(plan => (
+        <li class={`rounded-2xl p-8 border ${plan.highlighted ? 'bg-black text-white border-black' : 'bg-white border-gray-100'}`}>
+          <h3 class="font-semibold text-xl">{plan.title}</h3>
+          <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400' : 'text-gray-600'}`}>
+            {plan.description}
+          </p>
+          <p class="mt-6 text-4xl font-bold">{plan.price}</p>
+
+          <ul class="mt-8 space-y-3" role="list">
+            {plan.features.map(feature => (
+              <li class="flex items-center gap-3 text-sm">
+                <span aria-hidden="true">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#contato"
+            aria-label={`${plan.cta} — plano ${plan.title}`}
+            class={`mt-8 block text-center py-3 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              plan.highlighted
+                ? 'bg-white text-black hover:bg-gray-100 focus:ring-white'
+                : 'bg-black text-white hover:bg-gray-800 focus:ring-black'
+            }`}
+          >
+            {plan.cta}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
