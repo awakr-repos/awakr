@@ -1,43 +1,58 @@
-# Astro Starter Kit: Minimal
+# awakr
 
-```sh
-npm create astro@latest -- --template minimal
+Sites institucionais para pequenos negócios — gerenciados via Sanity, hospedados na Cloudflare Pages.
+
+## Stack
+
+- **[Astro](https://astro.build)** — framework estático, zero JS por padrão
+- **[Tailwind CSS v4](https://tailwindcss.com)** — estilos
+- **[@awakr/awake-ui](https://www.npmjs.com/package/@awakr/awake-ui)** — componentes React (somente nas páginas de demo)
+- **[Sanity](https://sanity.io)** — CMS (integração em desenvolvimento)
+- **[Cloudflare Pages](https://pages.cloudflare.com)** — hospedagem e deploy
+
+## Começando
+
+```bash
+# Na pasta raiz do projeto
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+O dev server sobe em `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Comandos
 
-Inside of your Astro project, you'll see the following folders and files:
+| Comando | Ação |
+|---|---|
+| `npm run dev` | Dev server em `localhost:4321` |
+| `npm run build` | Build de produção em `./dist/` |
+| `npm run preview` | Preview do build localmente |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+> Todos os comandos devem ser executados na raiz do projeto (`/Users/nil/projects/awakr`).
+
+## Estrutura
+
+```
+src/
+  components/    ← componentes Astro do marketing site
+  layouts/       ← BaseLayout (site) e DemoLayout (demos de cliente)
+  pages/
+    index.astro  ← marketing site
+    demo/        ← simulações de sites de clientes
+  styles/        ← global.css (Tailwind v4 + tokens)
+  lib/           ← integração Sanity
+public/          ← assets estáticos
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Variáveis de ambiente
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Crie um `.env` na raiz com:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```env
+SANITY_PROJECT_ID=seu_project_id
+SANITY_DATASET=production
+```
 
-## 🧞 Commands
+## Deploy
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Push para `main` na org `awakr` no GitHub dispara build automático no Cloudflare Pages.
