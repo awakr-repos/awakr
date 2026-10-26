@@ -1,0 +1,127 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro'
+---
+
+<DemoLayout 
+  title="Cantina do Zé — Comida caseira de verdade" 
+  businessName="Cantina do Zé"
+>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-bold text-xl tracking-tight">Cantina do Zé</span>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#cardapio" class="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cardápio</a>
+        <a href="#sobre" class="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Sobre</a>
+        <a href="#contato" class="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Contato</a>
+      </nav>
+      <a 
+        href="https://wa.me/5571999999999" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-sm bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+      >
+        Reservar mesa
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+    <p class="text-xs tracking-widest text-gray-400 uppercase mb-4">Desde 1987 · Salvador, BA</p>
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+      Comida caseira<br />de verdade
+    </h1>
+    <p class="text-lg text-gray-500 dark:text-gray-400 max-w-xl mb-10">
+      Pratos feitos com ingredientes frescos, do jeito que a sua família gosta. Almoço e jantar, de segunda a domingo.
+    </p>
+    <div class="flex items-center gap-4">
+      <a 
+        href="#cardapio" 
+        class="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+      >
+        Ver cardápio
+      </a>
+      <a 
+        href="#sobre" 
+        class="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+      >
+        Nossa história →
+      </a>
+    </div>
+  </section>
+
+  <!-- Divisor -->
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Info rápida -->
+  <section class="max-w-5xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <p class="text-xs tracking-widest text-gray-400 uppercase mb-2">Horário</p>
+      <p class="font-medium">Seg – Sex: 11h às 22h</p>
+      <p class="font-medium">Sáb – Dom: 11h às 23h</p>
+    </div>
+    <div>
+      <p class="text-xs tracking-widest text-gray-400 uppercase mb-2">Endereço</p>
+      <p class="font-medium">Rua das Flores, 142</p>
+      <p class="text-gray-500 dark:text-gray-400">Pelourinho, Salvador</p>
+    </div>
+    <div>
+      <p class="text-xs tracking-widest text-gray-400 uppercase mb-2">Contato</p>
+      <a href="https://wa.me/5571999999999" target="_blank" rel="noopener noreferrer" class="font-medium hover:underline">(71) 9 9999-9999</a>
+      <p class="text-gray-500 dark:text-gray-400">contato@cantinadorze.com.br</p>
+    </div>
+  </section>
+
+  <!-- Divisor -->
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Cardápio mockado -->
+  <section id="cardapio" class="max-w-5xl mx-auto px-6 py-20">
+    <p class="text-xs tracking-widest text-gray-400 uppercase mb-2">Cardápio</p>
+    <h2 class="text-3xl font-bold mb-12">O que tem hoje</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+      {[
+        { name: 'Frango ao molho pardo', desc: 'Frango caipira com mandioca frita e arroz temperado', price: 'R$ 38,90' },
+        { name: 'Moqueca de peixe', desc: 'Peixe fresco, leite de coco, dendê e coentro', price: 'R$ 52,00' },
+        { name: 'Carne de sol na chapa', desc: 'Acompanha feijão verde, macaxeira e vinagrete', price: 'R$ 46,00' },
+        { name: 'Prato vegano do dia', desc: 'Proteína de soja, legumes refogados e arroz integral', price: 'R$ 32,00' },
+        { name: 'Bobó de camarão', desc: 'Camarão fresco, aipim e azeite de dendê', price: 'R$ 58,00' },
+        { name: 'Strogonoff caseiro', desc: 'Frango ou carne, creme de leite e batata palha', price: 'R$ 36,00' },
+      ].map(item => (
+        <div class="flex items-start justify-between gap-4 py-4 border-b border-gray-100 dark:border-gray-800 last:border-0">
+          <div>
+            <p class="font-medium mb-1">{item.name}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{item.desc}</p>
+          </div>
+          <span class="text-sm font-medium whitespace-nowrap">{item.price}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Divisor -->
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Sobre -->
+  <section id="sobre" class="max-w-5xl mx-auto px-6 py-20">
+    <p class="text-xs tracking-widest text-gray-400 uppercase mb-2">Sobre nós</p>
+    <h2 class="text-3xl font-bold mb-6">Uma história de família</h2>
+    <p class="text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed">
+      A Cantina do Zé nasceu em 1987 quando Seu Zé e Dona Maria abriram as portas do quintal para alimentar os vizinhos. Hoje, três gerações depois, seguimos fiéis à mesma receita: ingredientes frescos, capricho no tempero e muito carinho em cada prato.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato" class="border-t border-gray-100 dark:border-gray-800 py-12 mb-8">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="font-bold text-lg">Cantina do Zé</span>
+      <p class="text-sm text-gray-400">© 2025 Cantina do Zé. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-6">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-black dark:hover:text-white transition-colors">Instagram</a>
+        <a href="https://wa.me/5571999999999" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-black dark:hover:text-white transition-colors">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+</DemoLayout>
