@@ -5,18 +5,21 @@ const layouts = [
     title: 'Clássico',
     description: 'Elegante e direto. Ideal para restaurantes tradicionais e negócios consolidados.',
     href: '/demo/layout-1',
+    ready: true,
   },
   {
     id: 2,
     title: 'Moderno',
     description: 'Visual arrojado e contemporâneo. Perfeito para negócios que querem se destacar.',
     href: '/demo/layout-2',
+    ready: true,
   },
   {
     id: 3,
     title: 'Minimalista',
     description: 'Limpo e objetivo. Foco total no produto e na identidade da marca.',
     href: '/demo/layout-3',
+    ready: true,
   },
 ]
 ---
@@ -37,22 +40,71 @@ const layouts = [
     <ul class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
       {layouts.map(layout => (
         <li class="group border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
-          <div class="bg-gray-100 dark:bg-gray-800 h-48 flex items-center justify-center">
-            <span class="text-gray-400 dark:text-gray-500 text-sm">Preview do layout {layout.id}</span>
+
+          <!-- Preview -->
+          <div class="layout-preview-container relative overflow-hidden bg-gray-50 dark:bg-gray-900">
+            {layout.ready ? (
+              <>
+                <iframe
+                  src={layout.href}
+                  title={`Preview do layout ${layout.title}`}
+                  aria-hidden="true"
+                  tabindex="-1"
+                  scrolling="no"
+                  class="layout-preview-iframe absolute top-0 left-0 border-0 pointer-events-none"
+                />
+                <div class="absolute inset-0" aria-hidden="true" />
+              </>
+            ) : (
+              <div class="h-full flex flex-col items-center justify-center gap-2">
+                <span class="text-gray-300 dark:text-gray-600 text-sm">Em breve</span>
+              </div>
+            )}
           </div>
+
+          <!-- Info -->
           <div class="p-6 bg-white dark:bg-gray-900">
-            <h3 class="font-semibold text-lg text-black dark:text-white">{layout.title}</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{layout.description}</p>
-            <a
-              href={layout.href}
-              aria-label={`Ver demonstração do layout ${layout.title}`}
-              class="mt-4 inline-block text-sm font-medium underline underline-offset-4 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
-            >
-              Ver demonstração →
-            </a>
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="font-semibold text-lg text-black dark:text-white">{layout.title}</h3>
+              {!layout.ready && (
+                <span class="text-xs text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full px-2 py-0.5">
+                  em breve
+                </span>
+              )}
+            </div>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{layout.description}</p>
+            {layout.ready ? (
+              <a
+                href={layout.href}
+                aria-label={`Ver demonstração do layout ${layout.title}`}
+                class="mt-4 inline-block text-sm font-medium underline underline-offset-4 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
+              >
+                Ver demonstração →
+              </a>
+            ) : (
+              <span class="mt-4 inline-block text-sm text-gray-400 cursor-default select-none">
+                Ver demonstração →
+              </span>
+            )}
           </div>
+
         </li>
       ))}
     </ul>
   </div>
 </section>
+
+<style>
+  .layout-preview-container {
+    height: 260px;
+  }
+
+  .layout-preview-iframe {
+    /* Renderiza em 2× o tamanho do container, escalado para 50%
+       → sempre preenche o container, independente da largura */
+    width: 200%;
+    height: 520px; /* 260px × 2 = mostra ~520px do topo da página */
+    transform: scale(0.5);
+    transform-origin: top left;
+  }
+</style>

@@ -1,0 +1,205 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro'
+
+const pizzas = [
+  { name: 'Margherita', desc: 'Molho de tomate, mussarela de búfala, manjericão fresco', price: 'R$ 52,00' },
+  { name: 'Pepperoni', desc: 'Molho de tomate, mussarela, pepperoni importado', price: 'R$ 58,00' },
+  { name: 'Quatro Queijos', desc: 'Mussarela, gorgonzola, provolone, parmesão', price: 'R$ 62,00' },
+  { name: 'Portuguesa', desc: 'Presunto, ovos, cebola, azeitona, mussarela', price: 'R$ 56,00' },
+  { name: 'Calabresa', desc: 'Calabresa fatiada, cebola roxa, mussarela', price: 'R$ 54,00' },
+  { name: 'Frango c/ Catupiry', desc: 'Frango desfiado, catupiry original, orégano', price: 'R$ 57,00' },
+  { name: 'Funghi', desc: 'Cogumelos frescos, azeite trufado, mussarela', price: 'R$ 64,00' },
+  { name: 'Napolitana', desc: 'Tomate fresco, alho, mussarela, manjericão, parmesão', price: 'R$ 55,00' },
+]
+---
+
+<DemoLayout
+  title="La Pietra — Pizzaria artesanal"
+  businessName="La Pietra"
+>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🍕</span>
+        <span class="font-bold text-lg tracking-tight">La Pietra</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-500 dark:text-gray-400">
+        <a href="#cardapio" class="hover:text-black dark:hover:text-white transition-colors">Cardápio</a>
+        <a href="#sobre" class="hover:text-black dark:hover:text-white transition-colors">Sobre</a>
+        <a href="#contato" class="hover:text-black dark:hover:text-white transition-colors">Contato</a>
+      </nav>
+      <a
+        href="https://wa.me/5571999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm bg-red-600 text-white px-4 py-2 rounded-full font-medium hover:bg-red-700 transition-colors"
+      >
+        Pedir agora
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero minimalista -->
+  <section class="max-w-5xl mx-auto px-6 py-20 md:py-32">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-4">Forno a lenha · Salvador, BA</p>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+          Pizza de verdade,<br />do jeito certo.
+        </h1>
+        <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+          Massa fermentada por 48h, molho de tomate San Marzano e ingredientes frescos. Assada em forno a lenha a 450°C.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="#cardapio"
+            class="bg-red-600 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-red-700 transition-colors"
+          >
+            Ver cardápio
+          </a>
+          <a
+            href="https://wa.me/5571999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border border-gray-200 dark:border-gray-700 text-sm px-6 py-3 rounded-full hover:border-gray-400 transition-colors"
+          >
+            Delivery →
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="bg-red-50 dark:bg-gray-900 rounded-3xl p-8 flex flex-col gap-4">
+        <div class="flex items-center gap-3 pb-4 border-b border-red-100 dark:border-gray-800">
+          <span class="text-2xl">🔥</span>
+          <div>
+            <p class="font-semibold text-sm">Forno a lenha</p>
+            <p class="text-gray-400 text-xs">450°C · 90 segundos</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 pb-4 border-b border-red-100 dark:border-gray-800">
+          <span class="text-2xl">🌾</span>
+          <div>
+            <p class="font-semibold text-sm">Massa longa fermentação</p>
+            <p class="text-gray-400 text-xs">48h · farinha tipo 00</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 pb-4 border-b border-red-100 dark:border-gray-800">
+          <span class="text-2xl">🍅</span>
+          <div>
+            <p class="font-semibold text-sm">Tomate San Marzano</p>
+            <p class="text-gray-400 text-xs">Importado, sem adição de açúcar</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🧀</span>
+          <div>
+            <p class="font-semibold text-sm">Mussarela de búfala</p>
+            <p class="text-gray-400 text-xs">Produção artesanal, Minas Gerais</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Cardápio -->
+  <section id="cardapio" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="flex items-end justify-between mb-12">
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-2">Cardápio</p>
+        <h2 class="text-3xl font-bold">Nossas pizzas</h2>
+      </div>
+      <p class="text-sm text-gray-400 hidden md:block">Tamanho único · 35cm · 8 fatias</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+      {pizzas.map(pizza => (
+        <div class="flex items-start justify-between gap-4 py-5 border-b border-gray-100 dark:border-gray-800">
+          <div>
+            <p class="font-semibold mb-1">{pizza.name}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{pizza.desc}</p>
+          </div>
+          <span class="text-sm font-bold text-red-600 whitespace-nowrap pt-0.5">{pizza.price}</span>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-xs text-gray-400 mt-8">
+      * Ingredientes adicionais: R$ 5,00 cada. Borda recheada com catupiry: R$ 8,00.
+    </p>
+  </section>
+
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Sobre -->
+  <section id="sobre" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-2">Nossa história</p>
+        <h2 class="text-3xl font-bold mb-6">Família italiana, tradição baiana.</h2>
+        <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+          A La Pietra nasceu da receita do Nonno Giuseppe, trazida de Nápoles em 1962. Três gerações depois, mantemos os mesmos princípios: ingredientes simples, técnica apurada e muito amor.
+        </p>
+        <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+          Nosso forno a lenha foi construído à mão, com pedras trazidas do interior da Bahia. É ele que dá aquele sabor inconfundível.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-red-600 mb-1">62</p>
+          <p class="text-xs text-gray-400 uppercase tracking-wide">anos de tradição</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-red-600 mb-1">48h</p>
+          <p class="text-xs text-gray-400 uppercase tracking-wide">fermentação</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-red-600 mb-1">450°</p>
+          <p class="text-xs text-gray-400 uppercase tracking-wide">forno a lenha</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-red-600 mb-1">8+</p>
+          <p class="text-xs text-gray-400 uppercase tracking-wide">sabores clássicos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="border-t border-gray-100 dark:border-gray-800" />
+
+  <!-- Footer / Contato -->
+  <footer id="contato" class="max-w-5xl mx-auto px-6 py-16 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-3">Horário</p>
+        <p class="font-medium">Ter – Sex: 18h às 23h</p>
+        <p class="font-medium">Sáb – Dom: 12h às 23h30</p>
+        <p class="text-gray-400 text-sm mt-2">Segunda fechado</p>
+      </div>
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-3">Endereço</p>
+        <p class="font-medium">Rua Marquês de Caravelas, 55</p>
+        <p class="text-gray-500 dark:text-gray-400">Barra, Salvador · BA</p>
+      </div>
+      <div>
+        <p class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-3">Contato</p>
+        <a href="https://wa.me/5571999999999" target="_blank" rel="noopener noreferrer"
+          class="font-medium hover:text-red-600 transition-colors block">(71) 9 9999-9999</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+          class="text-gray-400 text-sm hover:text-red-600 transition-colors">@lapietra.ssa</a>
+      </div>
+    </div>
+    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-8">
+      <div class="flex items-center gap-2">
+        <span>🍕</span>
+        <span class="font-bold">La Pietra</span>
+      </div>
+      <p class="text-xs text-gray-400">© 2025 La Pietra Pizzaria. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</DemoLayout>

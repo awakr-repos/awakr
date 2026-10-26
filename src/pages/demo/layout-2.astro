@@ -1,0 +1,218 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro'
+
+const menu = [
+  { name: 'Classic Glazed', desc: 'Cobertura de açúcar baunilha, massa fofinha', price: 'R$ 9,90' },
+  { name: 'Chocolate Dream', desc: 'Ganache de chocolate belga, granulado crocante', price: 'R$ 11,90' },
+  { name: 'Morango com Creme', desc: 'Creme chantilly, calda de morango fresco', price: 'R$ 12,90' },
+  { name: 'Lotus Caramelizado', desc: 'Pasta de Lotus, caramelo salgado', price: 'R$ 14,90' },
+  { name: 'Red Velvet', desc: 'Cobertura cream cheese, massa aveludada', price: 'R$ 13,90' },
+  { name: 'Pistache & Mel', desc: 'Creme de pistache, fio de mel, flor de sal', price: 'R$ 15,90' },
+]
+
+const cafes = [
+  { name: 'Espresso', price: 'R$ 7,00' },
+  { name: 'Cappuccino', price: 'R$ 12,00' },
+  { name: 'Latte', price: 'R$ 13,00' },
+  { name: 'Cold Brew', price: 'R$ 14,00' },
+  { name: 'Matcha Latte', price: 'R$ 15,00' },
+]
+---
+
+<DemoLayout
+  title="Dough & Co — Donuts artesanais em Salvador"
+  businessName="Dough & Co"
+>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#1a0a00]/90 backdrop-blur-sm border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-black text-xl tracking-tighter text-white">dough<span class="text-amber-400">&</span>co</span>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#menu" class="text-sm text-white/60 hover:text-white transition-colors">Menu</a>
+        <a href="#sobre" class="text-sm text-white/60 hover:text-white transition-colors">Sobre</a>
+        <a href="#visita" class="text-sm text-white/60 hover:text-white transition-colors">Visitar</a>
+      </nav>
+      <a
+        href="https://wa.me/5571999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm bg-amber-400 text-black font-semibold px-4 py-2 rounded-full hover:bg-amber-300 transition-colors"
+      >
+        Pedir agora
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="min-h-screen bg-[#1a0a00] flex flex-col justify-center pt-16">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-6">
+        Artesanal · Salvador, BA · Desde 2019
+      </p>
+      <h1 class="text-6xl md:text-8xl font-black text-white leading-none mb-8">
+        Feitos com<br />
+        <span class="text-amber-400">amor</span> e<br />
+        manteiga.
+      </h1>
+      <p class="text-white/60 text-lg max-w-lg mb-10 leading-relaxed">
+        Donuts artesanais com ingredientes selecionados. Produção diária, sem conservantes. Do forno pra você.
+      </p>
+      <div class="flex items-center gap-4 flex-wrap">
+        <a
+          href="#menu"
+          class="bg-amber-400 text-black font-bold px-8 py-4 rounded-full hover:bg-amber-300 transition-colors"
+        >
+          Ver menu
+        </a>
+        <a href="#sobre" class="text-white/60 hover:text-white transition-colors text-sm">
+          Nossa história →
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-20 grid grid-cols-3 gap-8 max-w-md">
+        <div>
+          <p class="text-4xl font-black text-white">12+</p>
+          <p class="text-white/40 text-xs mt-1 uppercase tracking-wide">sabores</p>
+        </div>
+        <div>
+          <p class="text-4xl font-black text-white">5★</p>
+          <p class="text-white/40 text-xs mt-1 uppercase tracking-wide">no Google</p>
+        </div>
+        <div>
+          <p class="text-4xl font-black text-white">diário</p>
+          <p class="text-white/40 text-xs mt-1 uppercase tracking-wide">produção</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu donuts -->
+  <section id="menu" class="bg-[#f5f0e8] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <p class="text-amber-700 text-sm font-semibold tracking-widest uppercase mb-2">Menu</p>
+          <h2 class="text-4xl font-black text-[#1a0a00]">Donuts do dia</h2>
+        </div>
+        <p class="text-sm text-[#1a0a00]/40 hidden md:block">Produção limitada · Esgota cedo</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {menu.map((item, i) => (
+          <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 hover:shadow-lg transition-shadow">
+            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-lg">
+              🍩
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-[#1a0a00] text-lg leading-tight">{item.name}</h3>
+              <p class="text-[#1a0a00]/50 text-sm mt-1 leading-relaxed">{item.desc}</p>
+            </div>
+            <p class="font-black text-[#1a0a00] text-xl">{item.price}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cafés -->
+  <section class="bg-[#1a0a00] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <p class="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-2">Bebidas</p>
+          <h2 class="text-4xl font-black text-white mb-8">Para acompanhar</h2>
+          <ul class="space-y-4">
+            {cafes.map(item => (
+              <li class="flex items-center justify-between py-4 border-b border-white/10 last:border-0">
+                <span class="text-white font-medium">{item.name}</span>
+                <span class="text-amber-400 font-bold">{item.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white/5 rounded-3xl p-8 border border-white/10">
+          <p class="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">Combo do dia</p>
+          <h3 class="text-3xl font-black text-white mb-3">Donut + Café</h3>
+          <p class="text-white/50 leading-relaxed mb-6">
+            Escolha qualquer donut do dia e combine com um espresso, cappuccino ou latte. O melhor duo da Bahia.
+          </p>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-white/30 line-through text-lg">R$ 21,90</span>
+            <span class="text-4xl font-black text-amber-400">R$ 17,90</span>
+          </div>
+          <a
+            href="https://wa.me/5571999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center bg-amber-400 text-black font-bold py-3 rounded-full hover:bg-amber-300 transition-colors"
+          >
+            Pedir pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="bg-[#f5f0e8] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <p class="text-amber-700 text-sm font-semibold tracking-widest uppercase mb-2">Sobre nós</p>
+        <h2 class="text-4xl font-black text-[#1a0a00] mb-6">Nascemos de uma paixão por doces honestos.</h2>
+        <p class="text-[#1a0a00]/60 text-lg leading-relaxed mb-4">
+          Em 2019, Ana e Pedro trocaram escritório por avental. O sonho era simples: fazer o donut que gostariam de comer — sem corantes artificiais, sem pressa.
+        </p>
+        <p class="text-[#1a0a00]/60 leading-relaxed">
+          Hoje, com produção diária e fila na porta todo fim de semana, a Dough & Co virou um clássico moderno de Salvador.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visitar -->
+  <section id="visita" class="bg-[#1a0a00] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div>
+          <p class="text-amber-400 text-xs font-semibold tracking-widest uppercase mb-3">Horário</p>
+          <p class="text-white font-medium">Ter – Sex: 9h às 18h</p>
+          <p class="text-white font-medium">Sáb – Dom: 9h às 16h</p>
+          <p class="text-white/30 text-sm mt-2">Segunda fechado</p>
+        </div>
+        <div>
+          <p class="text-amber-400 text-xs font-semibold tracking-widest uppercase mb-3">Endereço</p>
+          <p class="text-white font-medium">Rua Chile, 89</p>
+          <p class="text-white/50">Centro Histórico, Salvador</p>
+        </div>
+        <div>
+          <p class="text-amber-400 text-xs font-semibold tracking-widest uppercase mb-3">Contato</p>
+          <a href="https://wa.me/5571999999999" target="_blank" rel="noopener noreferrer"
+            class="text-white font-medium hover:text-amber-400 transition-colors block">
+            (71) 9 9999-9999
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+            class="text-white/50 text-sm hover:text-amber-400 transition-colors">
+            @doughandco
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0f0600] py-8 mb-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="font-black text-white">dough<span class="text-amber-400">&</span>co</span>
+      <p class="text-white/20 text-sm">© 2025 Dough & Co. Todos os direitos reservados.</p>
+      <div class="flex gap-6">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/30 text-sm hover:text-white transition-colors">Instagram</a>
+        <a href="https://wa.me/5571999999999" target="_blank" rel="noopener noreferrer"
+          class="text-white/30 text-sm hover:text-white transition-colors">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+</DemoLayout>
