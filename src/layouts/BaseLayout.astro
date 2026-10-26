@@ -17,16 +17,45 @@ const { title, description = 'awakr — sua presença digital' } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="awakr" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Theme color dinâmico (dark/light) -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
     <script is:inline>
-    const theme = localStorage.getItem('theme') ?? 
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-  </script>
+      // Dark mode
+      const theme = localStorage.getItem('theme') ??
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+
+      // Atualiza theme-color conforme tema ativo
+      function updateThemeColor(isDark) {
+        document.querySelectorAll('meta[name="theme-color"]').forEach(el => el.remove())
+        const meta = document.createElement('meta')
+        meta.name = 'theme-color'
+        meta.content = isDark ? '#000000' : '#ffffff'
+        document.head.appendChild(meta)
+      }
+      updateThemeColor(theme === 'dark')
+
+      // Registra Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {})
+        })
+      }
+    </script>
   </head>
   <body>
     <Header />
-        <slot />
+    <slot />
     <Footer />
   </body>
 </html>
