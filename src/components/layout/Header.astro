@@ -22,6 +22,21 @@ const navLinks = [
     </ul>
 
     <div class="flex items-center gap-3">
+      <!-- Botão instalar PWA (oculto por padrão, aparece via JS) -->
+      <button
+        id="pwa-install-btn"
+        aria-label="Instalar app"
+        title="Instalar awakr"
+        class="hidden items-center gap-1.5 text-sm px-3 py-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors text-gray-700 dark:text-gray-300"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Instalar</span>
+      </button>
+
       <!-- Theme toggle -->
       <button
         id="theme-toggle"
@@ -78,13 +93,39 @@ const navLinks = [
 </header>
 
 <script>
+  // PWA install
+  let deferredPrompt: any = null
+  const installBtn = document.getElementById('pwa-install-btn')
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault()
+    deferredPrompt = e
+    installBtn?.classList.remove('hidden')
+    installBtn?.classList.add('flex')
+  })
+
+  installBtn?.addEventListener('click', async () => {
+    if (!deferredPrompt) return
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    if (outcome === 'accepted') {
+      installBtn.classList.add('hidden')
+      installBtn.classList.remove('flex')
+    }
+    deferredPrompt = null
+  })
+
+  window.addEventListener('appinstalled', () => {
+    installBtn?.classList.add('hidden')
+    installBtn?.classList.remove('flex')
+    deferredPrompt = null
+  })
+
   // Theme toggle
   const themeToggle = document.getElementById('theme-toggle')
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark')
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
-
-    // Atualiza theme-color
     const meta = document.querySelector('meta[name="theme-color"]:not([media])')
     if (meta) meta.setAttribute('content', isDark ? '#000000' : '#ffffff')
   })
@@ -103,7 +144,6 @@ const navLinks = [
     menuToggle.setAttribute('aria-expanded', String(!isOpen))
   })
 
-  // Fecha menu ao clicar em um link
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden')
