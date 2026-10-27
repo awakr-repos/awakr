@@ -1,47 +1,23 @@
 ---
-const components = [
-  {
-    title: 'Carrossel de produtos',
-    description: 'Exiba seus produtos, pratos ou coleções de forma visual e atraente.',
-    icon: '🖼️',
-  },
-  {
-    title: 'Widget de eventos',
-    description: 'Divulgue eventos, shows e datas especiais do seu negócio.',
-    icon: '📅',
-  },
-  {
-    title: 'Seção de promoções',
-    description: 'Destaque ofertas e promoções para atrair mais clientes.',
-    icon: '🏷️',
-  },
-  {
-    title: 'Cardápio digital',
-    description: 'Integre seu cardápio Goomer diretamente no seu site.',
-    icon: '🍽️',
-  },
-]
+import type { Translations } from '../../i18n/pt'
+interface Props { t: Translations }
+const { t } = Astro.props
 ---
 
-<section 
-  id="como-funciona" 
-  aria-labelledby="components-heading"
-  class="py-24 bg-gray-50 dark:bg-gray-900"
->
+<section id="como-funciona" aria-labelledby="components-heading" class="py-24 bg-gray-50 dark:bg-gray-900">
   <div class="max-w-6xl mx-auto px-6">
     <h2 id="components-heading" class="text-3xl font-bold text-black dark:text-white">
-      O que você pode ter no seu site
+      {t.components.title}
     </h2>
     <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
-      Componentes prontos, personalizados com a sua identidade visual.
+      {t.components.subtitle}
     </p>
-
     <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
-      {components.map(component => (
+      {t.components.items.map(item => (
         <li class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-          <span class="text-3xl" aria-hidden="true">{component.icon}</span>
-          <h3 class="mt-4 font-semibold text-lg text-black dark:text-white">{component.title}</h3>
-          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{component.description}</p>
+          <span class="text-3xl" aria-hidden="true">{item.icon}</span>
+          <h3 class="mt-4 font-semibold text-lg text-black dark:text-white">{item.title}</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{item.description}</p>
         </li>
       ))}
     </ul>

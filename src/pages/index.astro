@@ -5,12 +5,15 @@ import Components from '../components/sections/Components.astro'
 import Layouts from '../components/sections/Layouts.astro'
 import Pricing from '../components/sections/Pricing.astro'
 import CTA from '../components/sections/CTA.astro'
+import { getTranslations } from '../i18n/index'
+
+const t = getTranslations('pt')
 ---
 
-<BaseLayout title="awakr — sua presença digital">
-  <Hero />
-  <Components />
+<BaseLayout title={t.meta.title} description={t.meta.description} t={t} currentLang="pt">
+  <Hero t={t} />
+  <Components t={t} />
   <Layouts />
-  <Pricing />
-  <CTA />
+  <Pricing t={t} />
+  <CTA t={t} />
 </BaseLayout>

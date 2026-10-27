@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero from '../../components/sections/Hero.astro'
+import Components from '../../components/sections/Components.astro'
+import Layouts from '../../components/sections/Layouts.astro'
+import Pricing from '../../components/sections/Pricing.astro'
+import CTA from '../../components/sections/CTA.astro'
+import { getTranslations } from '../../i18n/index'
+
+const t = getTranslations('es')
+---
+
+<BaseLayout title={t.meta.title} description={t.meta.description} t={t} currentLang="es">
+  <Hero t={t} />
+  <Components t={t} />
+  <Layouts />
+  <Pricing t={t} />
+  <CTA t={t} />
+</BaseLayout>

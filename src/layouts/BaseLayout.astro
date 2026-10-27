@@ -2,16 +2,19 @@
 import Footer from '../components/layout/Footer.astro'
 import Header from '../components/layout/Header.astro'
 import '../styles/global.css'
+import type { Translations } from '../i18n/pt'
 
 interface Props {
   title: string
   description?: string
+  t: Translations
+  currentLang: string
 }
 
-const { title, description = 'awakr — sua presença digital' } = Astro.props
+const { title, description = 'awakr — sua presença digital', t, currentLang } = Astro.props
 ---
 
-<html lang="pt-BR">
+<html lang={currentLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,17 +28,14 @@ const { title, description = 'awakr — sua presença digital' } = Astro.props
     <meta name="apple-mobile-web-app-title" content="awakr" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <!-- Theme color dinâmico (dark/light) -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 
     <script is:inline>
-      // Dark mode
       const theme = localStorage.getItem('theme') ??
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       document.documentElement.classList.toggle('dark', theme === 'dark')
 
-      // Atualiza theme-color conforme tema ativo
       function updateThemeColor(isDark) {
         document.querySelectorAll('meta[name="theme-color"]').forEach(el => el.remove())
         const meta = document.createElement('meta')
@@ -45,7 +45,6 @@ const { title, description = 'awakr — sua presença digital' } = Astro.props
       }
       updateThemeColor(theme === 'dark')
 
-      // Registra Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(() => {})
@@ -54,7 +53,7 @@ const { title, description = 'awakr — sua presença digital' } = Astro.props
     </script>
   </head>
   <body>
-    <Header />
+    <Header t={t} currentLang={currentLang} />
     <slot />
     <Footer />
   </body>

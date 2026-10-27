@@ -1,32 +1,29 @@
-<section
-  id="contato"
-  aria-labelledby="cta-heading"
-  class="py-24 bg-white dark:bg-gray-950"
->
+---
+import type { Translations } from '../../i18n/pt'
+interface Props { t: Translations }
+const { t } = Astro.props
+---
+
+<section id="contato" aria-labelledby="cta-heading" class="py-24 bg-white dark:bg-gray-950">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 id="cta-heading" class="text-4xl font-bold text-black dark:text-white">
-      Pronto para ter seu site?
+      {t.cta.title}
     </h2>
     <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">
-      Entre em contato e vamos construir a presença digital do seu negócio.
+      {t.cta.subtitle}
     </p>
-
     <a
       href="https://wa.me/55SEU_NUMERO"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Entrar em contato pelo WhatsApp"
+      aria-label={t.cta.whatsapp}
       class="mt-10 inline-block bg-black dark:bg-white text-white dark:text-black px-10 py-4 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
     >
-      Falar pelo WhatsApp
+      {t.cta.whatsapp}
     </a>
-
     <p class="mt-6 text-sm text-gray-400 dark:text-gray-500">
-      Ou envie um e-mail para{' '}
-      <a
-        href="mailto:awakr.app@gmail.com"
-        class="underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300 transition-colors text-gray-500 dark:text-gray-400"
-      >
+      {t.cta.emailPrefix}{' '}
+      <a href="mailto:awakr.app@gmail.com" class="underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300 transition-colors text-gray-500 dark:text-gray-400">
         awakr.app@gmail.com
       </a>
     </p>

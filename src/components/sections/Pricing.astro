@@ -1,85 +1,35 @@
 ---
-const plans = [
-  {
-    title: 'Landing Page',
-    price: 'A combinar',
-    description: 'Página única focada em conversão. Ideal para apresentar seu negócio e captar contatos.',
-    features: [
-      '1 página completa',
-      'Identidade visual personalizada',
-      'Formulário de contato',
-      'Domínio próprio configurado',
-      '30 dias de suporte',
-    ],
-    cta: 'Quero uma landing page',
-    highlighted: false,
-  },
-  {
-    title: 'Site Institucional',
-    price: 'A combinar',
-    description: 'Site completo para o seu negócio, sem painel de edição. Conteúdo atualizado por nós.',
-    features: [
-      'Até 5 páginas',
-      'Identidade visual personalizada',
-      'Cardápio ou catálogo',
-      'Domínio próprio configurado',
-      '30 dias de suporte',
-    ],
-    cta: 'Quero meu site',
-    highlighted: false,
-  },
-  {
-    title: 'Site com CMS',
-    price: 'A combinar',
-    description: 'Site completo com painel de edição. Você mesmo atualiza conteúdo, fotos e preços.',
-    features: [
-      'Tudo do Institucional',
-      'Painel Sanity Studio',
-      'Treinamento de uso incluso',
-      'Domínio próprio configurado',
-      'Atualizações em tempo real',
-      '60 dias de suporte',
-    ],
-    cta: 'Quero autonomia',
-    highlighted: true,
-  },
-]
+import type { Translations } from '../../i18n/pt'
+interface Props { t: Translations }
+const { t } = Astro.props
+const { plans, title, subtitle, price, badge } = t.pricing
+const highlighted = 2 // índice do plano destacado
 ---
 
-<section
-  id="precos"
-  aria-labelledby="pricing-heading"
-  class="py-24 bg-gray-50 dark:bg-gray-900"
->
+<section id="precos" aria-labelledby="pricing-heading" class="py-24 bg-gray-50 dark:bg-gray-900">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 id="pricing-heading" class="text-3xl font-bold text-black dark:text-white">
-      Preços
-    </h2>
-    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg max-w-xl">
-      Cada projeto é único. Converse com a gente e receba uma proposta personalizada para o seu negócio.
-    </p>
+    <h2 id="pricing-heading" class="text-3xl font-bold text-black dark:text-white">{title}</h2>
+    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg max-w-xl">{subtitle}</p>
 
     <ul class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
-      {plans.map(plan => (
+      {plans.map((plan, i) => (
         <li class={`relative rounded-2xl p-8 border flex flex-col ${
-          plan.highlighted
+          i === highlighted
             ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
             : 'bg-white dark:bg-gray-800 text-black dark:text-white border-gray-100 dark:border-gray-700'
         }`}>
-          {plan.highlighted && (
+          {i === highlighted && (
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-sm font-semibold bg-white dark:bg-black text-black dark:text-white px-4 py-1.5 rounded-full border border-gray-200 dark:border-gray-700 whitespace-nowrap">
-              Mais completo
+              {badge}
             </span>
           )}
-
           <div>
             <h3 class="font-semibold text-xl">{plan.title}</h3>
-            <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
+            <p class={`mt-2 text-sm ${i === highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {plan.description}
             </p>
-            <p class="mt-6 text-2xl font-bold">{plan.price}</p>
+            <p class="mt-6 text-2xl font-bold">{price}</p>
           </div>
-
           <ul class="mt-8 space-y-3 flex-1" role="list">
             {plan.features.map(feature => (
               <li class="flex items-start gap-3 text-sm">
@@ -88,12 +38,11 @@ const plans = [
               </li>
             ))}
           </ul>
-
           <a
             href="#contato"
             aria-label={`${plan.cta} — ${plan.title}`}
             class={`mt-8 block text-center py-3 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              plan.highlighted
+              i === highlighted
                 ? 'bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 focus:ring-white'
                 : 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 focus:ring-black dark:focus:ring-white'
             }`}
