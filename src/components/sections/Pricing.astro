@@ -1,33 +1,45 @@
 ---
 const plans = [
   {
-    title: 'Starter',
-    price: 'R$ 497',
-    description: 'Para quem quer começar com presença digital profissional.',
+    title: 'Landing Page',
+    price: 'A combinar',
+    description: 'Página única focada em conversão. Ideal para apresentar seu negócio e captar contatos.',
     features: [
-      '1 layout à escolha',
+      '1 página completa',
       'Identidade visual personalizada',
-      'Cardápio Goomer integrado',
+      'Formulário de contato',
       'Domínio próprio configurado',
-      'Treinamento no Sanity Studio',
       '30 dias de suporte',
     ],
-    cta: 'Começar agora',
+    cta: 'Quero uma landing page',
     highlighted: false,
   },
   {
-    title: 'Pro',
-    price: 'R$ 897',
-    description: 'Para negócios que querem mais visibilidade e recursos.',
+    title: 'Site Institucional',
+    price: 'A combinar',
+    description: 'Site completo para o seu negócio, sem painel de edição. Conteúdo atualizado por nós.',
     features: [
-      'Tudo do Starter',
-      'Seção de eventos',
-      'Seção de promoções',
-      'Carrossel de produtos',
-      'Link para iFood',
+      'Até 5 páginas',
+      'Identidade visual personalizada',
+      'Cardápio ou catálogo',
+      'Domínio próprio configurado',
+      '30 dias de suporte',
+    ],
+    cta: 'Quero meu site',
+    highlighted: false,
+  },
+  {
+    title: 'Site com CMS',
+    price: 'A combinar',
+    description: 'Site completo com painel de edição. Você mesmo atualiza conteúdo, fotos e preços.',
+    features: [
+      'Tudo do Institucional',
+      'Painel Sanity Studio',
+      'Treinamento de uso incluso',
+      'Atualizações em tempo real',
       '60 dias de suporte',
     ],
-    cta: 'Quero o Pro',
+    cta: 'Quero autonomia',
     highlighted: true,
   },
 ]
@@ -42,27 +54,35 @@ const plans = [
     <h2 id="pricing-heading" class="text-3xl font-bold text-black dark:text-white">
       Preços
     </h2>
-    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
-      Investimento único, sem mensalidade.
+    <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg max-w-xl">
+      Cada projeto é único. Converse com a gente e receba uma proposta personalizada para o seu negócio.
     </p>
 
-    <ul class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl" role="list">
+    <ul class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
       {plans.map(plan => (
-        <li class={`rounded-2xl p-8 border ${
-          plan.highlighted 
-            ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' 
+        <li class={`relative rounded-2xl p-8 border flex flex-col ${
+          plan.highlighted
+            ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
             : 'bg-white dark:bg-gray-800 text-black dark:text-white border-gray-100 dark:border-gray-700'
         }`}>
-          <h3 class="font-semibold text-xl">{plan.title}</h3>
-          <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-600 dark:text-gray-400'}`}>
-            {plan.description}
-          </p>
-          <p class="mt-6 text-4xl font-bold">{plan.price}</p>
+          {plan.highlighted && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold bg-white dark:bg-black text-black dark:text-white px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 whitespace-nowrap">
+              Mais completo
+            </span>
+          )}
 
-          <ul class="mt-8 space-y-3" role="list">
+          <div>
+            <h3 class="font-semibold text-xl">{plan.title}</h3>
+            <p class={`mt-2 text-sm ${plan.highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
+              {plan.description}
+            </p>
+            <p class="mt-6 text-2xl font-bold">{plan.price}</p>
+          </div>
+
+          <ul class="mt-8 space-y-3 flex-1" role="list">
             {plan.features.map(feature => (
-              <li class="flex items-center gap-3 text-sm">
-                <span aria-hidden="true">✓</span>
+              <li class="flex items-start gap-3 text-sm">
+                <span aria-hidden="true" class="mt-0.5 shrink-0">✓</span>
                 {feature}
               </li>
             ))}
@@ -70,10 +90,10 @@ const plans = [
 
           <a
             href="#contato"
-            aria-label={`${plan.cta} — plano ${plan.title}`}
+            aria-label={`${plan.cta} — ${plan.title}`}
             class={`mt-8 block text-center py-3 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               plan.highlighted
-                ? 'bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 focus:ring-white dark:focus:ring-black'
+                ? 'bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 focus:ring-white'
                 : 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 focus:ring-black dark:focus:ring-white'
             }`}
           >
