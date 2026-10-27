@@ -12,15 +12,27 @@ const { t } = Astro.props
     <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">
       {t.cta.subtitle}
     </p>
-    <a
-      href="https://wa.me/55SEU_NUMERO"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${t.cta.whatsapp} (abre nova aba)`}
-      class="mt-10 inline-block bg-black dark:bg-white text-white dark:text-black px-10 py-4 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
-    >
-      {t.cta.whatsapp}
-    </a>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="https://wa.me/55SEU_NUMERO"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${t.cta.whatsapp} (abre nova aba)`}
+        class="whitespace-nowrap bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
+      >
+        {t.cta.whatsapp}
+      </a>
+
+      <button
+        id="cal-btn"
+        aria-label={t.cta.schedule}
+        class="whitespace-nowrap px-8 py-4 rounded-full font-medium border border-gray-200 dark:border-gray-700 text-black dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2"
+      >
+        {t.cta.schedule}
+      </button>
+    </div>
+
     <p class="mt-6 text-sm text-gray-400 dark:text-gray-500">
       {t.cta.emailPrefix}{' '}
       <a href="mailto:awakr.app@gmail.com" class="underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300 transition-colors text-gray-500 dark:text-gray-400">
@@ -29,3 +41,49 @@ const { t } = Astro.props
     </p>
   </div>
 </section>
+
+<script>
+  (function (C, A, L) {
+    let p = function (a: any, ar: any) { a.q.push(ar) }
+    let d = C.document
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal
+      let ar = arguments
+      if (!cal.loaded) {
+        cal.ns = {}
+        cal.q = cal.q || []
+        d.head.appendChild(d.createElement('script')).src = A
+        cal.loaded = true
+      }
+      if (ar[0] === L) {
+        const api: any = function () { p(api, arguments) }
+        const namespace = ar[1]
+        api.q = api.q || []
+        if (typeof namespace === 'string') {
+          cal.ns[namespace] = cal.ns[namespace] || api
+          p(cal.ns[namespace], ar)
+          return
+        }
+        p(cal, ar)
+        return
+      }
+      p(cal, ar)
+    }
+  })(window, 'https://app.cal.com/embed/embed.js', 'init')
+
+  // @ts-ignore
+  Cal('init', 'apresentacao', { origin: 'https://cal.com' })
+
+  // @ts-ignore
+  Cal.ns['apresentacao']('ui', {
+    hideEventTypeDetails: false,
+    layout: 'month_view',
+  })
+
+  document.getElementById('cal-btn')?.addEventListener('click', () => {
+    // @ts-ignore
+    Cal.ns['apresentacao']('modal', {
+      calLink: 'awakr/apresentacao',
+    })
+  })
+</script>

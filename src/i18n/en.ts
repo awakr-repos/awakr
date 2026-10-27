@@ -68,6 +68,7 @@ export const en: Translations = {
     title: 'Ready to have your website?',
     subtitle: 'Get in touch and let\'s build the digital presence of your business.',
     whatsapp: 'Chat on WhatsApp',
+    schedule: 'Schedule a call',
     emailPrefix: 'Or send an email to',
   },
 }

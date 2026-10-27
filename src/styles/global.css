@@ -51,3 +51,8 @@
   background: #fff;
   color: #000;
 }
+
+/* Cursor pointer em todos os elementos interativos */
+button, [role="button"], a {
+  cursor: pointer;
+}

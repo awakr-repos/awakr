@@ -66,6 +66,7 @@ export const pt = {
     title: 'Pronto para ter seu site?',
     subtitle: 'Entre em contato e vamos construir a presença digital do seu negócio.',
     whatsapp: 'Falar pelo WhatsApp',
+    schedule: 'Agendar uma conversa',
     emailPrefix: 'Ou envie um e-mail para',
   },
 }
