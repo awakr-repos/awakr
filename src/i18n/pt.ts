@@ -37,25 +37,27 @@ export const pt = {
   pricing: {
     title: 'Preços',
     subtitle: 'Cada projeto é único. Converse com a gente e receba uma proposta personalizada para o seu negócio.',
-    price: 'A combinar',
     badge: 'Mais completo',
     plans: [
       {
         title: 'Landing Page',
         description: 'Página única focada em conversão. Ideal para apresentar seu negócio e captar contatos.',
         features: ['1 página completa', 'Identidade visual personalizada', 'Formulário de contato', 'Domínio próprio configurado', 'Instalável no celular', 'Funciona offline', '30 dias de suporte'],
+        price: 'A partir de R$ 800',
         cta: 'Quero uma landing page',
       },
       {
         title: 'Site Institucional',
         description: 'Site completo para o seu negócio, sem painel de edição. Conteúdo atualizado por nós.',
         features: ['Até 5 páginas', 'Identidade visual personalizada', 'Cardápio ou catálogo', 'Domínio próprio configurado', 'Instalável no celular', 'Funciona offline', '30 dias de suporte'],
+        price: 'R$ 1.500 – R$ 3.500',
         cta: 'Quero meu site',
       },
       {
         title: 'Site com CMS',
         description: 'Site completo com painel de edição. Você mesmo atualiza conteúdo, fotos e preços.',
-        features: ['Tudo do Institucional', 'Painel Sanity Studio', 'Treinamento de uso incluso', 'Domínio próprio configurado', 'Atualizações em tempo real', '60 dias de suporte'],
+        features: ['Tudo do Institucional', 'Painel Sanity Studio', 'Treinamento de uso incluso', 'Domínio próprio configurado', 'Instalável no celular', 'Funciona offline', 'Atualizações em tempo real', '60 dias de suporte'],
+        price: 'R$ 3.000 – R$ 5.500',
         cta: 'Quero autonomia',
       },
     ],

@@ -39,25 +39,27 @@ export const en: Translations = {
   pricing: {
     title: 'Pricing',
     subtitle: 'Every project is unique. Talk to us and receive a personalized proposal for your business.',
-    price: 'To be discussed',
     badge: 'Most complete',
     plans: [
       {
         title: 'Landing Page',
         description: 'Single page focused on conversion. Ideal for presenting your business and capturing contacts.',
         features: ['1 complete page', 'Personalized visual identity', 'Contact form', 'Custom domain configured', 'Installable on mobile', 'Works offline', '30 days of support'],
+        price: 'Starting at R$ 800',
         cta: 'I want a landing page',
       },
       {
         title: 'Institutional Website',
         description: 'Complete website for your business, without an editing panel. Content updated by us.',
         features: ['Up to 5 pages', 'Personalized visual identity', 'Menu or catalog', 'Custom domain configured', 'Installable on mobile', 'Works offline', '30 days of support'],
+        price: 'R$ 1,500 – R$ 3,500',
         cta: 'I want my website',
       },
       {
         title: 'Website with CMS',
         description: 'Complete website with editing panel. You update content, photos and prices yourself.',
-        features: ['Everything in Institutional', 'Sanity Studio panel', 'Usage training included', 'Custom domain configured', 'Real-time updates', '60 days of support'],
+        features: ['Everything in Institutional', 'Sanity Studio panel', 'Usage training included', 'Custom domain configured', 'Installable on mobile', 'Works offline', 'Real-time updates', '60 days of support'],
+        price: 'R$ 3,000 – R$ 5,500',
         cta: 'I want autonomy',
       },
     ],

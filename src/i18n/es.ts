@@ -39,13 +39,13 @@ export const es: Translations = {
   pricing: {
     title: 'Precios',
     subtitle: 'Cada proyecto es único. Habla con nosotros y recibe una propuesta personalizada para tu negocio.',
-    price: 'A convenir',
     badge: 'Más completo',
     plans: [
       {
         title: 'Landing Page',
         description: 'Página única enfocada en conversión. Ideal para presentar tu negocio y captar contactos.',
         features: ['1 página completa', 'Identidad visual personalizada', 'Formulario de contacto', 'Dominio propio configurado', 'Instalable en móvil', 'Funciona sin conexión', '30 días de soporte'],
+        price: 'Desde R$ 800',
         cta: 'Quiero una landing page',
       },
       {
@@ -57,7 +57,8 @@ export const es: Translations = {
       {
         title: 'Sitio con CMS',
         description: 'Sitio web completo con panel de edición. Tú mismo actualizas contenido, fotos y precios.',
-        features: ['Todo lo del Institucional', 'Panel Sanity Studio', 'Entrenamiento de uso incluido', 'Dominio propio configurado', 'Actualizaciones en tiempo real', '60 días de soporte'],
+        features: ['Todo lo del Institucional', 'Panel Sanity Studio', 'Entrenamiento de uso incluido', 'Dominio propio configurado', 'Instalable en móvil', 'Funciona sin conexión', 'Actualizaciones en tiempo real', '60 días de soporte'],
+        price: 'R$ 3.000 – R$ 5.500',
         cta: 'Quiero autonomía',
       },
     ],

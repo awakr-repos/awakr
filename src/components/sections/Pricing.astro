@@ -2,7 +2,7 @@
 import type { Translations } from '../../i18n/pt'
 interface Props { t: Translations }
 const { t } = Astro.props
-const { plans, title, subtitle, price, badge } = t.pricing
+const { plans, title, subtitle, badge } = t.pricing
 const highlighted = 2 // índice do plano destacado
 ---
 
@@ -28,7 +28,7 @@ const highlighted = 2 // índice do plano destacado
             <p class={`mt-2 text-sm ${i === highlighted ? 'text-gray-400 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {plan.description}
             </p>
-            <p class="mt-6 text-2xl font-bold">{price}</p>
+            <p class="mt-6 text-2xl font-bold">{plan.price}</p>
           </div>
           <ul class="mt-8 space-y-3 flex-1" role="list">
             {plan.features.map(feature => (
