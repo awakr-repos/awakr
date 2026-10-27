@@ -98,9 +98,9 @@ const navLinks = [
   const installBtn = document.getElementById('pwa-install-btn')
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    if (window.innerWidth >= 768) return // desktop: ignora
     e.preventDefault()
     deferredPrompt = e
+    if (window.innerWidth >= 768) return // desktop: não mostra o botão
     installBtn?.classList.remove('hidden')
     installBtn?.classList.add('flex')
   })
