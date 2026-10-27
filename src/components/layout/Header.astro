@@ -31,7 +31,7 @@ const langLinks = {
         title={t.nav.install}
         class="hidden md:hidden items-center gap-1.5 text-sm px-3 py-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors text-gray-700 dark:text-gray-300"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
@@ -40,11 +40,12 @@ const langLinks = {
       </button>
 
       <!-- Language switcher -->
-      <div class="flex items-center gap-1 border border-gray-200 dark:border-gray-700 rounded-full px-1 py-1">
-        {Object.entries(languages).map(([lang, { label }]) => (
+      <div role="navigation" aria-label="Idioma" class="flex items-center gap-1 border border-gray-200 dark:border-gray-700 rounded-full px-1 py-1">
+        {Object.entries(languages).map(([lang, { label, fullLabel }]) => (
           <a
             href={langLinks[lang as keyof typeof langLinks]}
-            aria-label={languages[lang as keyof typeof languages].fullLabel}
+            aria-label={fullLabel}
+            aria-current={currentLang === lang ? 'page' : undefined}
             class={`text-xs font-medium px-2 py-1 rounded-full transition-colors ${
               currentLang === lang
                 ? 'bg-black dark:bg-white text-white dark:text-black'
@@ -59,11 +60,20 @@ const langLinks = {
       <!-- Theme toggle -->
       <button
         id="theme-toggle"
-        aria-label="Alternar tema"
-        class="p-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+        aria-label="Ativar modo claro"
+        aria-pressed="false"
+        class="p-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors text-gray-700 dark:text-gray-300"
       >
-        <span class="dark:hidden" aria-hidden="true">🌙</span>
-        <span class="hidden dark:inline" aria-hidden="true">☀️</span>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:inline" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
       </button>
 
       <!-- CTA desktop -->
@@ -79,10 +89,10 @@ const langLinks = {
         aria-controls="mobile-menu"
         class="md:hidden p-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-gray-400 transition-colors text-gray-900 dark:text-white"
       >
-        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
-        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
@@ -135,12 +145,23 @@ const langLinks = {
   })
 
   // Theme toggle
-  const themeToggle = document.getElementById('theme-toggle')
+  const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement | null
+
+  function updateThemeToggleLabel(isDark: boolean) {
+    if (!themeToggle) return
+    themeToggle.setAttribute('aria-label', isDark ? 'Ativar modo claro' : 'Ativar modo escuro')
+    themeToggle.setAttribute('aria-pressed', String(isDark))
+  }
+
+  // Set initial state
+  updateThemeToggleLabel(document.documentElement.classList.contains('dark'))
+
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark')
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
     const meta = document.querySelector('meta[name="theme-color"]:not([media])')
     if (meta) meta.setAttribute('content', isDark ? '#000000' : '#ffffff')
+    updateThemeToggleLabel(isDark)
   })
 
   // Menu mobile
@@ -155,6 +176,7 @@ const langLinks = {
     iconOpen?.classList.toggle('hidden', !isOpen)
     iconClose?.classList.toggle('hidden', isOpen)
     menuToggle.setAttribute('aria-expanded', String(!isOpen))
+    menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu')
   })
 
   document.querySelectorAll('.mobile-link').forEach(link => {
@@ -163,6 +185,7 @@ const langLinks = {
       iconOpen?.classList.remove('hidden')
       iconClose?.classList.add('hidden')
       menuToggle?.setAttribute('aria-expanded', 'false')
+      menuToggle?.setAttribute('aria-label', 'Abrir menu')
     })
   })
 </script>

@@ -53,8 +53,11 @@ const { title, description = 'awakr — sua presença digital', t, currentLang }
     </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
     <Header t={t} currentLang={currentLang} />
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
