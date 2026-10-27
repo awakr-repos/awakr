@@ -57,7 +57,7 @@ export const es: Translations = {
       {
         title: 'Sitio con CMS',
         description: 'Sitio web completo con panel de edición. Tú mismo actualizas contenido, fotos y precios.',
-        features: ['Todo lo del Institucional', 'Panel Sanity Studio', 'Entrenamiento de uso incluido', 'Dominio propio configurado', 'Actualizaciones en tiempo real', 'Soporte PWA (instalable en móvil)', '60 días de soporte'],
+        features: ['Todo lo del Institucional', 'Panel Sanity Studio', 'Entrenamiento de uso incluido', 'Dominio propio configurado', 'Actualizaciones en tiempo real', '60 días de soporte'],
         cta: 'Quiero autonomía',
       },
     ],
