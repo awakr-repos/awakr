@@ -43,13 +43,13 @@ export const pt = {
       {
         title: 'Landing Page',
         description: 'Página única focada em conversão. Ideal para apresentar seu negócio e captar contatos.',
-        features: ['1 página completa', 'Identidade visual personalizada', 'Formulário de contato', 'Domínio próprio configurado', '30 dias de suporte'],
+        features: ['1 página completa', 'Identidade visual personalizada', 'Formulário de contato', 'Domínio próprio configurado', 'Instalável no celular', 'Funciona offline', '30 dias de suporte'],
         cta: 'Quero uma landing page',
       },
       {
         title: 'Site Institucional',
         description: 'Site completo para o seu negócio, sem painel de edição. Conteúdo atualizado por nós.',
-        features: ['Até 5 páginas', 'Identidade visual personalizada', 'Cardápio ou catálogo', 'Domínio próprio configurado', '30 dias de suporte'],
+        features: ['Até 5 páginas', 'Identidade visual personalizada', 'Cardápio ou catálogo', 'Domínio próprio configurado', 'Instalável no celular', 'Funciona offline', '30 dias de suporte'],
         cta: 'Quero meu site',
       },
       {

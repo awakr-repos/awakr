@@ -45,13 +45,13 @@ export const en: Translations = {
       {
         title: 'Landing Page',
         description: 'Single page focused on conversion. Ideal for presenting your business and capturing contacts.',
-        features: ['1 complete page', 'Personalized visual identity', 'Contact form', 'Custom domain configured', '30 days of support'],
+        features: ['1 complete page', 'Personalized visual identity', 'Contact form', 'Custom domain configured', 'Installable on mobile', 'Works offline', '30 days of support'],
         cta: 'I want a landing page',
       },
       {
         title: 'Institutional Website',
         description: 'Complete website for your business, without an editing panel. Content updated by us.',
-        features: ['Up to 5 pages', 'Personalized visual identity', 'Menu or catalog', 'Custom domain configured', '30 days of support'],
+        features: ['Up to 5 pages', 'Personalized visual identity', 'Menu or catalog', 'Custom domain configured', 'Installable on mobile', 'Works offline', '30 days of support'],
         cta: 'I want my website',
       },
       {

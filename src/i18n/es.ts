@@ -45,13 +45,13 @@ export const es: Translations = {
       {
         title: 'Landing Page',
         description: 'Página única enfocada en conversión. Ideal para presentar tu negocio y captar contactos.',
-        features: ['1 página completa', 'Identidad visual personalizada', 'Formulario de contacto', 'Dominio propio configurado', '30 días de soporte'],
+        features: ['1 página completa', 'Identidad visual personalizada', 'Formulario de contacto', 'Dominio propio configurado', 'Instalable en móvil', 'Funciona sin conexión', '30 días de soporte'],
         cta: 'Quiero una landing page',
       },
       {
         title: 'Sitio Institucional',
         description: 'Sitio web completo para tu negocio, sin panel de edición. Contenido actualizado por nosotros.',
-        features: ['Hasta 5 páginas', 'Identidad visual personalizada', 'Menú o catálogo', 'Dominio propio configurado', '30 días de soporte'],
+        features: ['Hasta 5 páginas', 'Identidad visual personalizada', 'Menú o catálogo', 'Dominio propio configurado', 'Instalable en móvil', 'Funciona sin conexión', '30 días de soporte'],
         cta: 'Quiero mi sitio web',
       },
       {
