@@ -57,7 +57,7 @@ export const en: Translations = {
       {
         title: 'Website with CMS',
         description: 'Complete website with editing panel. You update content, photos and prices yourself.',
-        features: ['Everything in Institutional', 'Sanity Studio panel', 'Usage training included', 'Custom domain configured', 'Real-time updates', '60 days of support'],
+        features: ['Everything in Institutional', 'Sanity Studio panel', 'Usage training included', 'Custom domain configured', 'Real-time updates', 'PWA support (installable on mobile)', '60 days of support'],
         cta: 'I want autonomy',
       },
     ],

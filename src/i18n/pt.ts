@@ -55,7 +55,7 @@ export const pt = {
       {
         title: 'Site com CMS',
         description: 'Site completo com painel de edição. Você mesmo atualiza conteúdo, fotos e preços.',
-        features: ['Tudo do Institucional', 'Painel Sanity Studio', 'Treinamento de uso incluso', 'Domínio próprio configurado', 'Atualizações em tempo real', '60 dias de suporte'],
+        features: ['Tudo do Institucional', 'Painel Sanity Studio', 'Treinamento de uso incluso', 'Domínio próprio configurado', 'Atualizações em tempo real', 'Suporte a PWA (instalável no celular)', '60 dias de suporte'],
         cta: 'Quero autonomia',
       },
     ],
